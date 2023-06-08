@@ -1,4 +1,4 @@
 const DashboardHome = () => {
-  return <div>DashboardHome</div>;
+  return <div>DashboardHome Something something</div>;
 };
 export default DashboardHome;

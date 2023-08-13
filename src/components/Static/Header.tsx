@@ -1,48 +1,36 @@
-import { FiMenu } from "react-icons/fi"
-import React from "react"
+// src/App.tsx
+import React from 'react';
+import RecipeCard from './RecipeCard';
 
-const Header = () => {
-    const [show, setShow] = React.useState(false)
+const Header: React.FC = () => {
+  const recipes = [
+    {
+      name: 'Chocolate Chip Cookies',
+      costInNaira: 1500,
+      exchangeRate: 440,
+      image: 'path/to/chocolate-chip-cookies.jpg', // Replace with actual image path
+      calories: 150,
+    },
+    // Add more recipes here
+  ];
 
-    const Toggle = () => {
-        setShow(!show)
-    }
   return (
-      <div className="w-[100%] h-[70px] bg-[#2A2C2F] flex justify-center items-center relative">
-          <div className="w-[95%] h-[100%] flex items-center justify-between">
-              <h1 className="text-[30px] font-semibold text-[#fff]">CWM</h1>
-
-              <div className="flex max-md:hidden">
-                  <h3 className="text-[#fff] m-3 font-medium">Trustees</h3>
-                  <h3 className="text-[#fff] m-3 font-medium">Interface</h3>
-                  <h3 className="text-[#fff] m-3 font-medium">Features</h3>
-                  <h3 className="text-[#fff] m-3 font-medium">Customer Support</h3>
-              </div>
-
-              <div className="flex items-center">
-                  <button className="max-sm:hidden bg-[#ff7417] h-[40px] w-[120px] items-center justify-center text-white rounded-lg">
-                  Get started
-              </button>
-
-              <div className="text-[25px] m-3 hidden max-md:flex cursor-pointer" onClick={Toggle}>
-                  <FiMenu />
-              </div>
-              </div>
-          </div>
-
-          {show ? (
-              <div className="absolute w-[200px] bg-[gray] right-[15px] top-[70px] rounded-md  column justify-center items-center p-[10px]">
-              <h3 className="text-[#fff] m-3 font-medium">Trustees</h3>
-                  <h3 className="text-[#fff] m-3 font-medium">Interface</h3>
-                  <h3 className="text-[#fff] m-3 font-medium">Features</h3>
-              <h3 className="text-[#fff] m-3 font-medium">Customer Support</h3>
-              <button className="bg-[#ff7417] h-[40px] w-[100%] items-center justify-center text-white rounded-lg">
-                  Get started
-              </button>
-          </div>
-          ) : null}
+    <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-4">Recipe Cost Converter</h1>
+      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {recipes.map((recipe, index) => (
+          <RecipeCard
+            key={index}
+            name={recipe.name}
+            costInNaira={recipe.costInNaira}
+            exchangeRate={recipe.exchangeRate}
+            image={recipe.image}
+            calories={recipe.calories}
+          />
+        ))}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
